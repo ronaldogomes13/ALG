@@ -194,7 +194,7 @@ public class AnalisadorLexico {
 		do{
 			 token = an.lexico(path);
 			System.out.println("TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
-		}while(c!=-1);
+		}while(c!=-1);//enquanto não encontrar fim de arquivo -1
 		
 
 	}
