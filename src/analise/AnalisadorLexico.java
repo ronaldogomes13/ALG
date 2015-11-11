@@ -26,8 +26,8 @@ public class AnalisadorLexico {
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	2,	-2,	-2,	-2	},//9
 		{	10,	10,	10,	11,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10,	10	},//10
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2	},//11
-		{	-2,	-2,	-2,	-2,	-2,	-2,	16,	15,	18,	-2,	-2,	-2,	-2,	-2,	-2,	30,	-2,	-2,	30,	30,	30,	30,	-2	},//12 
-		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	14,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	30,	-2,	-2,	30,	30,	30,	30,	-2	},//13 
+		{	-2,	-2,	-2,	-2,	-2,	-2,	16,	15,	18,	-2,	-2,	-2,	-2,	-2,	-2,	33,	-2,	-2,	33,	33,	33,	33,	-2	},//12 
+		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	14,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	32,	32,	3,	32,	-2	},//13 
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	30,	-2,	-2,	30,	30,	30,	30,	-2	},//14 
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	30,	-2,	-2,	30,	30,	30,	30,	-2	},//15 
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	30,	-2,	-2,	30,	30,	30,	30,	-2	},//16 
@@ -41,11 +41,13 @@ public class AnalisadorLexico {
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2	},//24
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2	},//25
 		{	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2	},//26
-		{	-2,	-2,	-2,	-2,	-2,	-2,-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2, -2,	-2	},//27
-		{	-2,	-2,	-2,	-2,	-2,	-2,-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2, -2,	-2	},//28
-		{	-2,	-2,	-2,	-2,	-2,	-2,-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2, -2,	-2	},//29
-		{	-2,	-2,	-2,	-2,	-2,	-2,-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2, -2,	-2	},//30
-		{	-2,	-2,	-2,	-2,	-2,	-2,-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2, -2,	-2	},//31
+		{	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//27
+		{	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//28
+		{	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//29
+		{	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//30
+		{	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//31
+                {	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//32
+                {	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,     -2,	-2	},//33
 		};
         /**
          * 
@@ -63,6 +65,7 @@ public class AnalisadorLexico {
 		try {
 			arquivo.seek(ponteiroArquivo);// fixa o inicio do arquivo a partir de um ponto especificado por ponteiroArquivo
 			c = arquivo.read();//inicia a leitura do  arquivo - tabela ASCII
+                        System.out.println(c);
                         //roda o arquivo montando os tokens até que chega em um estado de erro (-2)
 			while(tabelaDeTransicao[estado][mapaCaracter(c).valor] != -2){
                                 //pega o valor do estado após a transião por um simbolo e coloca em estado
@@ -84,12 +87,15 @@ public class AnalisadorLexico {
 		
 		switch (estado) {
 		case 27:// Num ( inteiro) estado final 27
+                        Token.NUM.tipo="Inteiro";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
 		case 28: // Num (real) estado final 28
+                        Token.NUM.tipo="Real";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
 		case 29:// Num (com notação cientifica real ou inteiro) estado final 29
+                        Token.NUM.tipo="NC";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
 		case 31:  // id estado final 31
@@ -102,6 +108,15 @@ public class AnalisadorLexico {
 			Token.COMENTARIO.lexema=lexema;
 			return Token.COMENTARIO;
 		case 30: // Operador relacional – OPR 
+			Token.OPR.lexema=lexema;
+			return Token.OPR;
+                case 32: // Operador relacional – OPR >
+			Token.OPR.lexema=lexema;
+			return Token.OPR;
+                  case 15: // Operador relacional – OPR <=
+			Token.OPR.lexema=lexema;
+			return Token.OPR;
+                 case 16: // Operador relacional – OPR <>
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
 		case 18: // Atribuição – RCB (<-)
@@ -190,11 +205,11 @@ public class AnalisadorLexico {
 	/*Metodo Principal **/
 	public static void main(String args[]) {
 		AnalisadorLexico an = new AnalisadorLexico();
-		Token token=null;
+		Token token;
 		do{
 			 token = an.lexico(path);
 			System.out.println("TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
-		}while(c!=-1);
+		}while(token != token.EOF);
 		
 
 	}
