@@ -10,9 +10,11 @@ public class AnalisadorLexico {
 	 static long ponteiroArquivo=0;
 	 static int estado=0;
 	 static int c=0;
+         static int contLinha=0;
 	 String lexema;
 	static RandomAccessFile arquivo=null;
 	static int tabelaDeTransicao[][] =
+                 //     0       1       2       3       4       5       6       7       8       9       10      11      12      13      14      15      16      17      18      19      20      21
 		// 	L	D	{	}	"	<	>	=	-	+	*	/	(	)	;	EOF	E	pt	out	sp	\n	\t	underL	
 		{{	7,	1,	10,	-2,	8,	12,	13,	17,	20,	19,	21,	22,	23,	24,	25,	26,	-2,	-2,	-2,	0,	0,	0,	-2	},//0
 		{	-2,	1,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	27,	4,	2,	27,	27,	27,	27,	-2	},//1 
@@ -65,21 +67,19 @@ public class AnalisadorLexico {
 		try {
 			arquivo.seek(ponteiroArquivo);// fixa o inicio do arquivo a partir de um ponto especificado por ponteiroArquivo
 			c = arquivo.read();//inicia a leitura do  arquivo - tabela ASCII
-                        System.out.println(c);
+                        
                         //roda o arquivo montando os tokens até que chega em um estado de erro (-2)
 			while(tabelaDeTransicao[estado][mapaCaracter(c).valor] != -2){
                                 //pega o valor do estado após a transião por um simbolo e coloca em estado
 				estado = tabelaDeTransicao[estado][mapaCaracter(c).valor];
 				lexema+=(char)c;//monta o lexema do token que está sendo montado
-				c=arquivo.read(); // Lê o proximo byte do arquivo 
+				c=arquivo.read(); // Lê o proximo byte do arquivo  
 				ponteiroArquivo++; // atualiza o ponto onde onde o arquivo está sendo lido
-				if(c==-1){//fim de arquivo (-1)
-					return mapaDeEstado(estado);
-				}
+
 			}
 		} catch (IOException e) {
 			System.out.println("ERRO NA LEITURA DO ARQUIVO");
-		}
+		}                
 		return mapaDeEstado(estado);
 	}
 /* Mapea os estados */
@@ -146,6 +146,7 @@ public class AnalisadorLexico {
 		case 26: // Fim de Arquivo - EOF
 			return Token.EOF;
 		default:
+                        Token.ERRO.lexema=lexema;
 			return Token.ERRO;
 		}
 	}
@@ -164,8 +165,9 @@ public class AnalisadorLexico {
 		if (c == 32){
 			return Coluna.ESPACO;
 		}
-		if (c == 10)
-			return Coluna.BARRA_N;
+		if (c == 10 || c==13){
+                    return Coluna.BARRA_N;
+                }
 		if (c == 9)
 			return Coluna.BARRA_T;
 		if (c == 59)
@@ -208,8 +210,18 @@ public class AnalisadorLexico {
 		Token token;
 		do{
 			 token = an.lexico(path);
-			System.out.println("TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
+			//System.out.println("TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
+                        System.out.print("token: "+token);
+                        if(token.tipo!=null){
+                            System.out.print(" Tipo:"+ token.tipo);
+                        }else if(token.lexema!=null){
+                            System.out.print(" Lexema: "+token.lexema);
+                            System.out.println("");
+                        }else if(token==token.ERRO){
+                            System.out.println(" Token: "+token+": LEXEMA :"+token.lexema+ " Linha do Erro: "+contLinha);
+                        }
 		}while(token != token.EOF);
+               
 		
 
 	}
