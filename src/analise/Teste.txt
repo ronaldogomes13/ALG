@@ -1,1 +1,1 @@
-arroz com feijao + {agora} "tudo" / * 
+a + b
