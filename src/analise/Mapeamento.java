@@ -7,6 +7,7 @@ package analise;
 /**
  *
  * @author Ronaldo Gomes
+ * @author Álesson Davi
  */
 public class Mapeamento {
     
