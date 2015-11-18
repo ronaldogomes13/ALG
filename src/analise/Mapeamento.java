@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package analise;
+
+import java.io.IOException;
+
 /**
  *
  * @author Ronaldo Gomes
  * @author Álesson Davi
  */
 public class Mapeamento {
+    public static int contLinha=0;
     
     /**
      * 
@@ -25,8 +29,10 @@ public class Mapeamento {
 			return Coluna.L;
 		if (c == 32){
 			return Coluna.ESPACO;
-		}
+                }
 		if (c == 10 || c==13){
+                    if(c==13)
+                    AnalisadorLexico.contLinha++;
                     return Coluna.BARRA_N;
                 }
 		if (c == 9)
@@ -61,8 +67,9 @@ public class Mapeamento {
 			return Coluna.MENOR;
 		if (c == 46)
 			return Coluna.PONTO;
-		if (c == 95)
+		if (c == 95){
 			return Coluna.UNDER_LINE;
+                }
 		return Coluna.OUTRO;
 	}
     /**
@@ -72,70 +79,94 @@ public class Mapeamento {
      * @return Token - Token reconhecido pelo estado em que o automato parou.
      */
     public static Token mapeiaEstado(int estado, String lexema) {
-		
-		switch (estado) {
-		case 27:// Num ( inteiro) estado final 27
+		if(estado==27){
+                    Token.ERRO.lexema=lexema;
+			return Token.ERRO;
+                }
+                    
+		if(estado == 1){
+                         // Num ( inteiro) estado final
+                        
+                        // while(!isConcatenavelNum(AnalisadorLexico.c))
                         Token.NUM.tipo="Inteiro";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
-		case 28: // Num (real) estado final 28
+                }
+		if(estado==3){ // Num (real) estado final 28
                         Token.NUM.tipo="Real";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
-		case 29:// Num (com notação cientifica real ou inteiro) estado final 29
+                }
+		if(estado==6){// Num (com notação cientifica real ou inteiro) estado final 29
                         Token.NUM.tipo="NC";
 			Token.NUM.lexema=lexema;
 			return Token.NUM;
-		case 31:  // id estado final 31
+                }
+		if(estado==7){  // id estado final 31
 			Token.ID.lexema=lexema;
 			return Token.ID;
-		case 9: // Literal
+                }
+		if(estado==9){ // Literal
 			Token.LITERAL.lexema=lexema;
 			return Token.LITERAL;
-		case 11: // Comentário
+                }
+		if(estado==11){ // Comentário
 			Token.COMENTARIO.lexema=lexema;
 			return Token.COMENTARIO;
-		case 30: // Operador relacional – OPR 
+                }
+		if(estado==17) {// Operador relacional – OPR 
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
-                case 32: // Operador relacional – OPR >
+                }
+                if(estado==13) {// Operador relacional – OPR >
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
-                  case 15: // Operador relacional – OPR <=
+                }
+                 if(estado==15){ // Operador relacional – OPR <=
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
-                 case 16: // Operador relacional – OPR <>
+                 }
+                 if(estado==16){ // Operador relacional – OPR <>
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
-		case 18: // Atribuição – RCB (<-)
+                 }
+		if(estado==18) {// Atribuição – RCB (<-)
 			Token.OPR.lexema=lexema;
 			return Token.RCB;
-		case 19: // Operadores aritméticos – OPM (+)
+                }
+		if(estado==19){// Operadores aritméticos – OPM (+)
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
-		case 20: // Operadores aritméticos – OPM (-)
+                }
+		if(estado==20){ // Operadores aritméticos – OPM (-)
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
-		case 21: // Operadores aritméticos – OPM (*)
+                }
+		if(estado==21){ // Operadores aritméticos – OPM (*)
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
-		case 22: // Operadores aritméticos – OPM (/)
+                }
+		if(estado==22){ // Operadores aritméticos – OPM (/)
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
-		case 23: // Abre Parentes – AB_P (
+                }
+		if(estado==23){ // Abre Parentes – AB_P (
 			Token.AB_P.lexema=lexema;
 			return Token.AB_P;
-		case 24: // Fecha Parentes – FC_P )
+                }
+		if(estado==24){ // Fecha Parentes – FC_P )
 			Token.FC_P.lexema=lexema;
 			return Token.FC_P;
-		case 25: // Ponto e Virgula – PT_V (;)
+                }
+		if(estado==25) {// Ponto e Virgula – PT_V (;)
 			Token.PT_V.lexema=lexema;
 			return Token.PT_V;
-		case 26: // Fim de Arquivo - EOF
+                }
+		if(estado==26){ // Fim de Arquivo - EOF
 			return Token.EOF;
-		default:
-                        Token.ERRO.lexema=lexema;
-			return Token.ERRO;
+                }   //System.out.println(" estado "+estado);
+                        
+                Token.ERRO.lexema=lexema;
+		return Token.ERRO;
 		}
-	}
 }

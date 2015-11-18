@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package analise;
+
+import java.util.Hashtable;
+
 /**
  *
  * @author Ronaldo Gomes
@@ -13,13 +16,12 @@ public class MainTeste {
          String path = "src/analise/Teste.txt";
 		AnalisadorLexico an = new AnalisadorLexico();
 		Token token;
-		do{
+	do{
+            
 			 token = an.analisaLexema(path);
-			System.out.println("TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
-		}while(token != token.EOF);
-               
-		
-
+			System.out.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
+		}while(token != token.EOF); 
+                
 	}
     
 }
