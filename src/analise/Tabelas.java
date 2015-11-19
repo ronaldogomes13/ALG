@@ -13,6 +13,7 @@ import java.util.LinkedList;
  * @author Ronaldo Gomes
  */
 public class Tabelas {
+    
     static int tabelaDeTransicao[][] =
    // 	L	D	{	}	"	<	>	=	-	+	*	/	(	)	;	EOF	E	pt	out	sp	\n	\t	underL	
 {{	7,	1,	10,	11,	8,	12,	13,	17,	20,	19,	21,	22,	23,	24,	25,	26,	7,	-2,	-2,	0,	0,	0,	-2},// 0
@@ -44,5 +45,6 @@ public class Tabelas {
 {	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2,	-2},// 26 estado final
 {	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	27,	-2,	-2,	-2,	27},// 27 testes 
 };
-   
+  
+
 }

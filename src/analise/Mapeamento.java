@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Mapeamento {
     public static int contLinha=0;
-    
+     TabelaDeSimbolos tab = new TabelaDeSimbolos();
     /**
      * 
      * @param c char - um byte numero representado a tabela ascii
@@ -82,11 +82,9 @@ public class Mapeamento {
 		if(estado==27){
                     Token.ERRO.lexema=lexema;
 			return Token.ERRO;
-                }
-                    
+                }   
 		if(estado == 1){
                          // Num ( inteiro) estado final
-                        
                         // while(!isConcatenavelNum(AnalisadorLexico.c))
                         Token.NUM.tipo="Inteiro";
 			Token.NUM.lexema=lexema;
@@ -104,7 +102,9 @@ public class Mapeamento {
                 }
 		if(estado==7){  // id estado final 31
 			Token.ID.lexema=lexema;
-			return Token.ID;
+                        //return Token.ID;
+                        TabelaDeSimbolos tab = new TabelaDeSimbolos();
+                        return tab.palavrasReservadas(Token.ID);
                 }
 		if(estado==9){ // Literal
 			Token.LITERAL.lexema=lexema;

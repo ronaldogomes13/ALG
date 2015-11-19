@@ -46,7 +46,7 @@ public class AnalisadorLexico {
                                 break;
                            
 			}   
-                        //System.out.println(c);
+                        System.out.println(c);
                         }catch(ArrayIndexOutOfBoundsException err){
                             System.out.println("Consulta na matriz com estes parametros é impossivel [ "+estado+" ] [ "+Mapeamento.mapeiaCaracter(c).valor+" ]");
                         }

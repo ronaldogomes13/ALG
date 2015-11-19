@@ -14,12 +14,11 @@ import java.util.Hashtable;
 public class MainTeste {
     public static void main(String args[]) {
          String path = "src/analise/Teste.txt";
-		AnalisadorLexico an = new AnalisadorLexico();
-		Token token;
+	AnalisadorLexico an = new AnalisadorLexico();
+	Token token;       
 	do{
-            
-			 token = an.analisaLexema(path);
-			System.out.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
+            token = an.analisaLexema(path);
+            System.out.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
 		}while(token != token.EOF); 
                 
 	}
