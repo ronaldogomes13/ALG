@@ -31,8 +31,6 @@ public class Mapeamento {
 			return Coluna.ESPACO;
                 }
 		if (c == 10 || c==13){
-                    if(c==13)
-                    AnalisadorLexico.contLinha++;
                     return Coluna.BARRA_N;
                 }
 		if (c == 9)
@@ -119,6 +117,10 @@ public class Mapeamento {
 			return Token.OPR;
                 }
                 if(estado==13) {// Operador relacional – OPR >
+			Token.OPR.lexema=lexema;
+			return Token.OPR;
+                }
+                if(estado==14) {// Operador relacional – OPR >
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
                 }

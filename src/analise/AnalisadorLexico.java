@@ -9,7 +9,7 @@ public class AnalisadorLexico {
 	 static long ponteiroArquivo=0;
 	 static int c=0;
 	 static String lexema;
-         static int contLinha=0;
+         static int contLinha=1;
 	static RandomAccessFile arquivo=null;
         /**
          * analisaLexema() - Lê byte por byte do arquivo enqunto monta os lexemas e define os tokens ao qual pertencem. 
@@ -37,16 +37,16 @@ public class AnalisadorLexico {
                         try{
 			while(Tabelas.tabelaDeTransicao[estado][Mapeamento.mapeiaCaracter(c).valor] != -2){
                             estado = Tabelas.tabelaDeTransicao[estado][Mapeamento.mapeiaCaracter(c).valor];
-                            //Aceita.aceitaToken(estado, arquivo.read());
-                            if(c!=-1 && c!=32 && c != 10 && c!=9 && c!=13)
+                            if(c!=-1 || c== 13/**&& c!=32 && c != 10 && c!=9 && c!=13*/)
                                 lexema+=(char)c;
                             c=arquivo.read(); 
+                            if(c==10)
+                                AnalisadorLexico.contLinha++;
                             ponteiroArquivo++;
                             if(estado<0)
                                 break;
                            
 			}   
-                        System.out.println(c);
                         }catch(ArrayIndexOutOfBoundsException err){
                             System.out.println("Consulta na matriz com estes parametros é impossivel [ "+estado+" ] [ "+Mapeamento.mapeiaCaracter(c).valor+" ]");
                         }
@@ -54,6 +54,7 @@ public class AnalisadorLexico {
 		} catch (IOException e) {
 			System.out.println("ERRO NA LEITURA DO ARQUIVO");
 		}
+                //System.out.println(estado);
                 return Mapeamento.mapeiaEstado(estado, lexema);
 	}
 }

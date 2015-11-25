@@ -18,7 +18,11 @@ public class MainTeste {
 	Token token;       
 	do{
             token = an.analisaLexema(path);
-            System.out.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema+ "]");
+            if(token!=Token.ERRO){
+            System.out.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema.trim()+ "]");
+            }else{
+                System.err.println(AnalisadorLexico.contLinha+". TOKEN = ["+token+"]: LEXEMA ["+token.lexema.trim()+ "]");
+            }
 		}while(token != token.EOF); 
                 
 	}
