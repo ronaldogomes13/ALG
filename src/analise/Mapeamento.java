@@ -100,7 +100,6 @@ public class Mapeamento {
                 }
 		if(estado==7){  // id estado final 31
 			Token.ID.lexema=lexema;
-                        //return Token.ID;
                         TabelaDeSimbolos tab = new TabelaDeSimbolos();
                         return tab.palavrasReservadas(Token.ID);
                 }

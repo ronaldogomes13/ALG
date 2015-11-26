@@ -16,7 +16,7 @@ public class AnalisadorLexico {
          * @param path String - caminho do arquivo de entrada
          * @return Token - token encontrado no arquivo
          */
-	public Token analisaLexema(String path) {	
+	public static Token analisaLexema(String path) {	
 		 int estado=0;
 		 lexema=""; 
 		 try {
