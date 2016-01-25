@@ -16,6 +16,11 @@ public class Main {
     public static void main(String args[]){
         AnalisadorSintatico analisador = new AnalisadorSintatico();
         analisador.analisaSintaxe();
+        
+        //apenas para testes
+        
+        //fim dos testes
+        
     }
     
 }

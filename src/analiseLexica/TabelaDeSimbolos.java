@@ -13,23 +13,29 @@ import java.util.Hashtable;
  * @author Ronaldo Gomes
  */
 class TabelaDeSimbolos {
-    Hashtable<String, Token> tabela = new Hashtable<>();
-    
+    Hashtable<String, Token> tabela = new Hashtable<>();    
 
     public TabelaDeSimbolos() {
-        String lexema[]={"inicio","varinicio","varfim","escreva","leia", "se", "entao", "fimse", "fim","literal","inteiro","real"};
-        Token token[]={INICIO,VARINICIO,VARFIM, ESCREVA , LEIA, SE, ENTAO, FIMSE, FIM,LITERAL,NUM,NUM};
-        for(int i=0;i<token.length;i++){
-            token[i].lexema=lexema[i];
-            tabela.put(token[i].lexema, token[i]);
-        }
+        /** INICIA A TABELA DE SIMBOLOS COM AS PALAVRAS RESERVADAS   */
+        tabela.put("inicio", INICIO);
+        tabela.put("varinico", INICIO);
+        tabela.put("varfim", INICIO);
+        tabela.put("escreva", INICIO);
+        tabela.put("leia", INICIO);
+        tabela.put("se", INICIO);
+        tabela.put("entao", INICIO);
+        tabela.put("fimse", INICIO);
+        tabela.put("fim", INICIO);
+        tabela.put("literal", LITERAL);
+        tabela.put("inteiro", INTEIRO);
+        tabela.put("real", REAL);
+        
     }
     
     Token palavrasReservadas(Token token1) {
         while(tabela.get(token1.lexema)!=null){
             if(tabela.get(token1)==token1)
-            System.out.println(tabela.get(token1.lexema));;
-            
+            System.out.println(tabela.get(token1.lexema));
                 return tabela.get(token1.lexema);
         }
         return token1.ID;
