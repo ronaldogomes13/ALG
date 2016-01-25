@@ -36,26 +36,30 @@ public class AnalisadorSintatico {
             pilha.push(0);
             int sLinha;
           while(true){//repetir para sempre 
+ //System.out.println("topo da pilha ="+pilha.peek());
             s=(Integer) pilha.peek(); //Seja S o estado ao topo da pilha
             a=ip; //a o simbolo apontado por ip
-             
             if(acao(s,a).substring(0,1).equalsIgnoreCase("S")){   //se acao[s,a]=empilhar
                 this.pilha.push(a);//empilhar a
                  sLinha = Integer.parseInt((acao(s,a).substring( 1, acao(s,a).length() ) ));
                 this.pilha.push(sLinha );//e em seguida sLinha no topo da pilha
                 ip=an.analisaLexema(path);//avançar ip para o proximo simbolo
-            }else if(acao(s,a).substring(0,1).equalsIgnoreCase("R")){//se acao(s,a)=reduzir             
+            }else if(acao(s,a).substring(0,1).equalsIgnoreCase("R")){//se acao(s,a)=reduzir 
                 sLinha=Integer.parseInt(acao(s,a).substring(1, acao(s,a).length())); 
                 int tamanhoBeta=gramatica[sLinha+1].split(" ").length - 1;
                 //desempilhar 2*|beta| simbolos para fora da pilha
                 for(int i =0; i< 2*tamanhoBeta;i++){
                     this.pilha.pop();
                 }
+
                 sLinha = (int) this.pilha.peek();//seja sLinha o estado ao topo da pilha
                 String[] producao=gramatica[sLinha-1].split(" ");
                 this.pilha.push(producao[0]);//empilhar A (lado esquerdo da produção)
+//System.out.println("Slinha =>>"+sLinha);
+ // System.out.println("topo da pilha ="+pilha.peek());
                 this.pilha.push(desvio(sLinha,producao[0])); //e em seguida desvio(sLinha,A)    
                 System.out.println(gramatica[sLinha-1]);//escrever a produção A-> Beta na tela
+
             }else if(acao(s,a).equalsIgnoreCase("ACEITE")){//se acao(s,a)=aceitar
                System.out.println("ACEITOU");
                return "ACEITOU";//retornar
