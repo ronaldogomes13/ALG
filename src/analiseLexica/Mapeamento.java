@@ -4,17 +4,12 @@
  * and open the template in the editor.
  */
 package analiseLexica;
-
-import java.io.IOException;
-
 /**
  *
  * @author Ronaldo Gomes
  * @author Álesson Davi
  */
 public class Mapeamento {
-    public static int contLinha=0;
-     TabelaDeSimbolos tab = new TabelaDeSimbolos();
     /**
      * 
      * @param c char - um byte numero representado a tabela ascii
@@ -76,97 +71,93 @@ public class Mapeamento {
      * @param lexema String - lexema formado ao reconhecer o token
      * @return Token - Token reconhecido pelo estado em que o automato parou.
      */
-    public static Token mapeiaEstado(int estado, String lexema) {
+    public static Token mapeiaEstado(int estado, String lexema, TabelaDeSimbolos tabelaDeSimbolos) {
 		if(estado==27){
                     Token.ERRO.lexema=lexema;
 			return Token.ERRO;
                 }   
 		if(estado == 1){
-                         // Num ( inteiro) estado final
-                        // while(!isConcatenavelNum(AnalisadorLexico.c))
                         Token.NUM.tipo="Inteiro";
 			Token.NUM.lexema=lexema.trim();
 			return Token.NUM;
                 }
-		if(estado==3){ // Num (real) estado final 28
+		if(estado==3){
                         Token.NUM.tipo="Real";
 			Token.NUM.lexema=lexema.trim();
 			return Token.NUM;
                 }
-		if(estado==6){// Num (com notação cientifica real ou inteiro) estado final 
+		if(estado==6){
                         Token.NUM.tipo="NC";
 			Token.NUM.lexema=lexema.trim();
 			return Token.NUM;
                 }
 		if(estado==7){ 
 			Token.ID.lexema=lexema.trim();
-                        TabelaDeSimbolos tab = new TabelaDeSimbolos();
-                        return tab.palavrasReservadas(Token.ID);
+                        return OperaTabelaDeSimbolos.insereNaTabSimbolos(Token.ID, tabelaDeSimbolos);
                 }
-		if(estado==9){ // Literal
+		if(estado==9){ 
 			Token.LITERAL.lexema=lexema.trim();
 			return Token.LITERAL;
                 }
-		if(estado==11){ // Comentário
+		if(estado==11){ 
 			Token.COMENTARIO.lexema=lexema;
 			return Token.COMENTARIO;
                 }
-		if(estado==17) {// Operador relacional – OPR 
+		if(estado==17) {
 			Token.OPR.lexema=lexema.trim();
 			return Token.OPR;
                 }
-                if(estado==13) {// Operador relacional – OPR >
+                if(estado==13) {
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
                 }
-                if(estado==14) {// Operador relacional – OPR >
+                if(estado==14) {
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
                 }
-                 if(estado==15){ // Operador relacional – OPR <=
+                 if(estado==15){ 
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
                  }
-                 if(estado==16){ // Operador relacional – OPR <>
+                 if(estado==16){
 			Token.OPR.lexema=lexema;
 			return Token.OPR;
                  }
-		if(estado==18) {// Atribuição – RCB (<-)
+		if(estado==18) {
 			Token.OPR.lexema=lexema;
 			return Token.RCB;
                 }
-		if(estado==19){// Operadores aritméticos – OPM (+)
+		if(estado==19){
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
                 }
-		if(estado==20){ // Operadores aritméticos – OPM (-)
+		if(estado==20){ 
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
                 }
-		if(estado==21){ // Operadores aritméticos – OPM (*)
+		if(estado==21){ 
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
                 }
-		if(estado==22){ // Operadores aritméticos – OPM (/)
+		if(estado==22){ 
 			Token.OPM.lexema=lexema;
 			return Token.OPM;
                 }
-		if(estado==23){ // Abre Parentes – AB_P (
+		if(estado==23){ 
 			Token.AB_P.lexema=lexema;
 			return Token.AB_P;
                 }
-		if(estado==24){ // Fecha Parentes – FC_P )
+		if(estado==24){ 
 			Token.FC_P.lexema=lexema;
 			return Token.FC_P;
                 }
-		if(estado==25) {// Ponto e Virgula – PT_V (;)
+		if(estado==25) {
 			Token.PT_V.lexema=lexema;
 			return Token.PT_V;
                 }
-		if(estado==26){ // Fim de Arquivo - EOF
+		if(estado==26){ 
 			return Token.EOF;
-                }   
-                        
+                }           
                 Token.ERRO.lexema=lexema;
 		return Token.ERRO;
 		}

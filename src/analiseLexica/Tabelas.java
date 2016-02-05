@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package analiseLexica;
-
-import java.util.Hashtable;
-import java.util.LinkedList;
-
 /**
  *
  * @author Ronaldo Gomes

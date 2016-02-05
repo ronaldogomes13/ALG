@@ -6,6 +6,8 @@
 package analiseSintatica;
 
 import analiseLexica.AnalisadorLexico;
+import analiseLexica.OperaTabelaDeSimbolos;
+import analiseLexica.TabelaDeSimbolos;
 import analiseLexica.Token;
 
 /**
@@ -14,13 +16,27 @@ import analiseLexica.Token;
  */
 public class Main {
     public static void main(String args[]){
+        TabelaDeSimbolos tabelaDeSimbolos = new TabelaDeSimbolos();
+        //OperaTabelaDeSimbolos.imprimeTabDeSimbolos(tabelaDeSimbolos);
         AnalisadorSintatico analisador = new AnalisadorSintatico();
-        analisador.analisaSintaxe();
+        analisador.analisaSintaxe(tabelaDeSimbolos);
+        //OperaTabelaDeSimbolos.imprimeTabDeSimbolos(tabelaDeSimbolos);
         
-        //apenas para testes
+        /**apenas para testes
+          String path = "src/analiseLexica/Teste.txt";
+	AnalisadorLexico an = new AnalisadorLexico();
+	Token token;    
+       do{
+           token=an.analisaLexema(path,tabelaDeSimbolos);
+           System.out.println("Token: ["+token+"]; Lexema: ["+token.lexema+"];  Tipo: "+token.tipo);
+            
+        }while(token!=token.EOF);
+        OperaTabelaDeSimbolos.imprimeTabDeSimbolos(tabelaDeSimbolos);
+        *///fim dos testes
         
-        //fim dos testes
-        
+        for(int i=0;i<analisador.gramatica.length;i++){
+            System.out.println((i+1)+" "+analisador.gramatica[i]);
+        }
     }
     
 }

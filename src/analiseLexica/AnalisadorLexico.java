@@ -14,15 +14,16 @@ public class AnalisadorLexico {
         /**
          * analisaLexema() - Lê byte por byte do arquivo enqunto monta os lexemas e define os tokens ao qual pertencem. 
          * @param path String - caminho do arquivo de entrada
+     * @param tabelaDeSimbolos
          * @return Token - token encontrado no arquivo
          */
-	public Token analisaLexema(String path) {	
+	public Token analisaLexema(String path, TabelaDeSimbolos tabelaDeSimbolos) {	
 		 int estado=0;
 		 lexema=""; 
 		 try {
 			arquivo=new RandomAccessFile(new File(path), "r");
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo Não encontrado");
+			System.out.println("Arquivo Não encontrado"+e);
 		}
 		try {
 			arquivo.seek(ponteiroArquivo);
@@ -54,6 +55,6 @@ public class AnalisadorLexico {
 		} catch (IOException e) {
 			System.out.println("ERRO NA LEITURA DO ARQUIVO");
 		}
-                return Mapeamento.mapeiaEstado(estado, lexema);
+                return Mapeamento.mapeiaEstado(estado, lexema, tabelaDeSimbolos);
 	}
 }
