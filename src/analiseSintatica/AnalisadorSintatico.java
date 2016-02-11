@@ -7,6 +7,7 @@ package analiseSintatica;
 
 import analiseLexica.AnalisadorLexico;
 import analiseLexica.TabelaDeSimbolos;
+import AnaliseSemantica.AnalisadorSemantico;
 import java.util.Stack;
 import analiseLexica.Token;
 
@@ -70,6 +71,7 @@ public class AnalisadorSintatico {
                                     System.out.print(regraDeProducao[i]+" ");
                                 }
                                 System.out.println("");
+                                AnalisadorSemantico.analisaRegraSemantica(numRegraDeProducao+1);
 			} else if (acao(s, a).equalsIgnoreCase("ACEITE")) {
 
 				System.out.println("ACEITOU");
