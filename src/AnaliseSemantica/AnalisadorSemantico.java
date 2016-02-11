@@ -14,7 +14,7 @@ import Main.EscreveEmArquivo;
 public class AnalisadorSemantico {
     
     public static void analisaRegraSemantica(int regraSintatica){
-        String pathArquivoObjegto="C:\\Users\\Ronaldo Gomes\\Documents\\ProjetoALG\\programa.c";
+        String pathArquivoObjegto=javax.swing.filechooser.FileSystemView.getFileSystemView().getDefaultDirectory()+"/ProjetoALG/programa.c";
         switch(regraSintatica){
             case 5:
                 //Imprimir três linhas brancas no arquivo objeto;
